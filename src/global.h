@@ -29,8 +29,8 @@ inline static print_duration (struct timeval * tv1,struct timeval * tv2)
     if (tv2->tv_sec > tv1->tv_sec) {
         if (tv1->tv_usec > tv2->tv_usec) {
             seconds--;
+            mseconds += 1000000;
         }
-        mseconds += 1000000;
     }
 
     printf ("%ld.%.6ld", seconds, mseconds);

@@ -23,7 +23,11 @@
 
 inline static print_duration (struct timeval * tv1,struct timeval * tv2)
 {
-    size_t seconds = tv2->tv_sec - tv1->tv_sec;
+size_t mseconds = ((tv2->tv_sec - tv1->tv_sec) * 1000000) +  (tv2->tv_usec - tv1->tv_usec);
+
+printf ("%ld", mseconds);
+
+/*    size_t seconds = tv2->tv_sec - tv1->tv_sec;
     long mseconds = tv2->tv_usec - tv1->tv_usec;
 
     if (tv2->tv_sec > tv1->tv_sec) {
@@ -33,7 +37,7 @@ inline static print_duration (struct timeval * tv1,struct timeval * tv2)
         }
     }
 
-    printf ("%ld.%.6ld", seconds, mseconds);
+    printf ("%ld.%.6ld", seconds, mseconds);*/
 }
 
 inline static int my_tolower (char ch)

@@ -8,7 +8,6 @@ typedef struct {
     agr_inputword_t * word;
     agr_finder_result_t **results;
     pthread_mutex_t *results_sync_mutex;
-    int little_endian;
 } agr_finder_workerproc_arg_t;
 
 // Size is 32bit or 64bit, depending of architecture
@@ -46,8 +45,8 @@ inline static void check_line (agr_finder_workerproc_arg_t * worker_arg, unsigne
                 freq_copy[ch]--;
             }
 
-            if (restore_freq_copy && pos > 0) {
-                do {
+            if (restore_freq_copy) {
+                while (pos > 0) {
                     pos--;
                     
                     ch = tmpp[pos];
@@ -57,7 +56,7 @@ inline static void check_line (agr_finder_workerproc_arg_t * worker_arg, unsigne
 #endif
 
                     freq_copy[ch]++;
-                } while (pos > 0);
+                }
             }
 
             if (ln_start) {

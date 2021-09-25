@@ -7,6 +7,6 @@ The output is a comma-separated string with duration in microseconds as the firs
 *bin/agr* \<dictionary.txt\> \<word\>
 
 ## Build
-Executing 'make' in project directory should build the executable.
+Execute 'make' in project directory and the executable `bin/agr` is built.
 
 Tested only on 64bit Linux.
